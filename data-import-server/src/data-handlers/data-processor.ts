@@ -1,6 +1,6 @@
 import { Case, CaseOptions } from "app-models";
 import { DatabaseInterface } from "server-components";
-import { environment } from "./environment";
+import { environment } from "../environment";
 import { logInvocation } from "log-decorator";
 
 export class DataProcessor {
@@ -23,11 +23,15 @@ export class DataProcessor {
     @logInvocation()
     public async processBatch(requestid: string) {
         const cases: Case[] = [];
-        for (const row of Array.from(this.batch)) {
-            const newCase = new Case(row.bankName, row.propertyName, row.borrowerName, row.city, Date.now(), Date.now());
-            cases.push(newCase);
+        try {
+            for (const row of Array.from(this.batch)) {
+                const newCase = new Case(row.bankName, row.propertyName, row.borrowerName, row.city, Date.now(), Date.now());
+                cases.push(newCase);
+            }
+            await this.db.createCases(requestid, cases);
+        } catch (error) {
+            console.log(error);
         }
-        await this.db.createCases(requestid, cases);
         this.batch.clear();
     }
 

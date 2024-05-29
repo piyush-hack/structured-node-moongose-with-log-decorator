@@ -1,8 +1,8 @@
 import { CaseOptions } from "app-models";
 import { FileReadService } from "./data-fetcher";
-import { DataImportJob } from "./data-import-job";
 import { DatabaseService, MongodbConnection } from 'server-components'
 import { environment } from './environment'
+import { DataImportJob } from "./data-handlers";
 
 const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQy30Ma5Tqxc0LhVzK-q3OJsYudEvYozPZOU78wWex-zejOJeSj_zrb_4F6hmaeBAMDCtAqvHcZ3l-x/pub?output=csv';
 const headerMappings: Record<string, CaseOptions> = {

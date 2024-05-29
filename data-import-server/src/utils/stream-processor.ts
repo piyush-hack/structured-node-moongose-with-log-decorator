@@ -1,5 +1,5 @@
 import { Transform, Writable } from 'stream';
-import { DataProcessor } from '../data-processor';
+import { DataProcessor } from '../data-handlers/data-processor';
 import { CaseOptions } from 'app-models';
 import { DatabaseInterface } from 'server-components';
 import { environment } from '../environment';

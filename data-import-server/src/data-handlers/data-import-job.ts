@@ -1,5 +1,5 @@
 import * as cron from 'node-cron';
-import { DataFetcherInterface } from './data-fetcher';
+import { DataFetcherInterface } from '../data-fetcher';
 import { CaseOptions } from 'app-models';
 import { logInvocation } from 'log-decorator';
 export class DataImportJob {
