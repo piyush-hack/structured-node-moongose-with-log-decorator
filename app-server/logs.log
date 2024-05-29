@@ -1,0 +1,64 @@
+
+> walinkgenerator@1.0.0 start
+> tsc-watch --compiler typescript/bin/tsc --onSuccess "node dist/local.js"
+
+c1:15:05 am - Starting compilation in watch mode...
+
+
+1:15:06 am -[32m Found 0 errors. Watching for file changes.[39m
+Server Start at 3000
+MongoDB initialized
+{
+  requestId: '1717011914838',
+  functionCalled: 'Calling AppServerAPI.getCases() - 33.75 MB',
+  data: {
+    details: '[\n' +
+      '  "1717011914838",\n' +
+      '  {\n' +
+      '    "city": [\n' +
+      '      "483"\n' +
+      '    ],\n' +
+      '    "start": 0,\n' +
+      '    "end": 4,\n' +
+      '    "from": 0,\n' +
+      '    "to": 1212121212121212\n' +
+      '  }\n' +
+      ']'
+  }
+}
+{
+  requestId: '1717011914838',
+  functionCalled: 'Calling DatabaseService.getCases() - 33.77 MB',
+  data: {
+    details: '[\n' +
+      '  "1717011914838",\n' +
+      '  {\n' +
+      '    "city": [\n' +
+      '      "483"\n' +
+      '    ],\n' +
+      '    "start": 0,\n' +
+      '    "end": 4,\n' +
+      '    "from": 0,\n' +
+      '    "to": 1212121212121212\n' +
+      '  }\n' +
+      ']'
+  }
+}
+{
+  requestId: '1717011914838',
+  functionCalled: 'Calling CasesService.getCases() - 33.78 MB',
+  data: {
+    details: '[\n' +
+      '  "1717011914838",\n' +
+      '  {\n' +
+      '    "city": [\n' +
+      '      "483"\n' +
+      '    ],\n' +
+      '    "start": 0,\n' +
+      '    "end": 4,\n' +
+      '    "from": 0,\n' +
+      '    "to": 1212121212121212\n' +
+      '  }\n' +
+      ']'
+  }
+}
