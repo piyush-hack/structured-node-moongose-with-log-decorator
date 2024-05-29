@@ -26,9 +26,9 @@ export class FileReadService implements DataFetcherInterface {
 
     response.data
       .pipe(csv())
-      .pipe(this.streamProcessor.processCsvStream(requestid , headerMappings))
-      .on('finish', () => {
-        this.streamProcessor.processRemainingData(requestid)
+      .pipe(this.streamProcessor.processCsvStream(requestid, headerMappings))
+      .on('finish', async () => {
+        await this.streamProcessor.processRemainingData(requestid)
       });
   }
 
