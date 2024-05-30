@@ -22,7 +22,7 @@ export class Case {
 
 }
 
-export const CaseSchema = new Schema<Case>({
+const CaseSchema = new Schema<Case>({
     [CaseOptions.bankName]: { type: String, default: '' },
     [CaseOptions.propertyName]: { type: String, default: '' },
     [CaseOptions.borrowerName]: { type: String, default: '' },
@@ -32,3 +32,5 @@ export const CaseSchema = new Schema<Case>({
 });
 
 CaseSchema.loadClass(Case);
+
+export { CaseSchema }

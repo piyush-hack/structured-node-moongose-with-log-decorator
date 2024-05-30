@@ -1,7 +1,7 @@
 
 import { Model, Schema } from 'mongoose';
 import { MongodbConnection } from '../../../mongodb';
-import { CaseSchema } from 'app-models';
+import { Case, CaseSchema } from 'app-models';
 import { CollectionMapper } from '../../../collection-mapper';
 
 export abstract class MongodbConnector {
@@ -14,15 +14,15 @@ export abstract class MongodbConnector {
 	}
 
 	protected CaseModel() {
-		return this.getModel(CollectionMapper.CASES, CaseSchema)
+		return this.getModel<Case>(CollectionMapper.CASES, CaseSchema)
 	}
 
-	protected getModel(collection: CollectionMapper, schema: Schema) {
+	protected getModel<T>(collection: CollectionMapper, schema: Schema) {
 		if (!this.mongodbConnection.getDb()) {
 			return null;
 		}
 		if (!this.models.get(schema)) {
-			const model = this.mongodbConnection.getDb().model(collection, schema);
+			const model = this.mongodbConnection.getDb().model<T>(collection, schema);
 			this.models.set(schema, model)
 		}
 		return this.models.get(schema);
