@@ -15,15 +15,18 @@ export class MongoDBCasesConnector extends MongodbConnector implements CasesDBCo
 
     async getCases(casesQuery: GetCasesQuery): Promise<Case[]> {
         try {
-            const findCasesQuery = {
-                [CaseOptions.createdAt]: { $gte: casesQuery.from, $lte: casesQuery.to }
-            };
-            if (casesQuery?.city?.length) {
-                findCasesQuery[CaseOptions.city] = { $in: casesQuery.city }
-            }
-            return await this.CaseModel().find(findCasesQuery)
-                .skip(casesQuery.start)
-                .limit(casesQuery.end)
+            const aggregation = [{
+                $match:
+                {
+                    [CaseOptions.city]: { $in: [casesQuery.city] },
+                    [CaseOptions.bankName]: casesQuery.bankName,
+                    [CaseOptions.propertyName]: casesQuery.propertyName,
+                    [CaseOptions.borrowerName]: casesQuery.borrowerName,
+                    [CaseOptions.createdAt]: { $gte: 0, $lte: 11111111111111 }
+                }
+            }];
+            return await this.CaseModel().aggregate(aggregation)
+
         } catch (error) {
             throw error;
         }
